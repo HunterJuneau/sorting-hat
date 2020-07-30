@@ -3,6 +3,10 @@
 const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
 let studentNames = [];
 
+const printToDom = (divId, string) => {
+	document.getElementById(divId).innerHTML = string;
+};
+
 const openForm = () => {
 	document.getElementById('form').innerHTML = `<div class="card">
                                                  <form class="card-body">
@@ -16,7 +20,8 @@ const openForm = () => {
 };
 
 const sortListener = () => {
-	document.getElementById('sort').addEventListener('click', buildCard);
+    document.getElementById('sort').addEventListener('click', getName);
+    document.getElementById('sort').addEventListener('click', cardBuilder);
 };
 
 const startSorting = () => {
@@ -24,8 +29,24 @@ const startSorting = () => {
 };
 
 const getName = () => {
-	const name = namedocument.getElementById('name').value;
+	const name = document.getElementById('name').value;
 	return studentNames.push(name);
+};
+
+const cardBuilder = () => {
+	let domString = '';
+
+	for (let i = 0; i < studentNames.length; i++) {
+		domString += `<div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="card-title">${studentNames[i]}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">House</h6>
+                        </div>
+                    </div>`;
+	}
+	console.log('Hi!');
+
+	printToDom('cards-container', domString);
 };
 
 const init = () => {
