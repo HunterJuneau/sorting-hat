@@ -37,10 +37,11 @@ const cardBuilder = () => {
 	let domString = '';
 
 	for (let i = 0; i < studentNames.length; i++) {
+        let housePicker = Math.floor(Math.random() * 4)
 		domString += `<div class="card" style="width: 18rem;">
                         <div class="card-body">
                         <h5 class="card-title">${studentNames[i]}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">House</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">${houses[housePicker]}</h6>
                         </div>
                     </div>`;
 	}
